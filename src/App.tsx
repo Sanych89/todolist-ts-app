@@ -51,7 +51,37 @@ function App() {
   }
 
   
+  function changeStatus (taskId: string, isDone: boolean) {
+    console.log('change')
+    let task = tasks.find( t => t.id === taskId)
+    console.log(taskId)
+    if (task) {
+    task.isDone = isDone;
+    setTasks([...tasks]) //передали в сетТаскс копию таскс для того , чтобы реакт
+    // понял что изменился передаваемый обьект (он не смотрит в содержимое под обьектов)
+    // и перерисовался // 
+    }
+    
+      /* запись   t => t.id === taskId)  эквивалентна 
+      означает что функция только ретурнит тру/фолс в зависимости от выполнения условия
 
+      if (t.id === taskId) {
+        return true;        
+      }
+      else {
+        return false
+      }*/
+
+      /* фрагмент 
+          if (task) {
+    task.isDone = isDone;
+    }
+
+    означает что если таск суещсвтует то у него поменяется свойство обьекта изДан
+       */ 
+    }
+
+  
 
   return (
     <div className="App">
@@ -61,6 +91,7 @@ function App() {
       removeTask={removeTask}
       changeFilter={changeFilter}
       addTask={addTask}
+      changeStatus={changeStatus}
        />
 
     </div>
